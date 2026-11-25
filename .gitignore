@@ -1,0 +1,7 @@
+# Local scratch and tooling
+tools/
+images_backup/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
