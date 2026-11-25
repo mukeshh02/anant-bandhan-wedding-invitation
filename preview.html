@@ -279,9 +279,13 @@
     <source src="Inkem Inkem Inkem Kaavaale  Flute Siva  Geetha Govindam - flutesiva.mp3" type="audio/mpeg">
   </audio>
 
-  <button id="musicToggleBtn" class="floating-music-btn" aria-label="Toggle Music" title="Play / Pause Music">
+  <button id="musicToggleBtn" class="floating-music-btn paused" aria-label="Toggle Music" title="Play / Pause Music">
     <svg class="music-note-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+    <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="6.5" y="5" width="3.5" height="14" rx="1.75"/>
+      <rect x="14" y="5" width="3.5" height="14" rx="1.75"/>
     </svg>
   </button>
 
@@ -315,24 +319,36 @@
       transform: scale(0.95);
     }
     .floating-music-btn .music-note-icon {
+      display: none;
       width: 22px;
       height: 22px;
       fill: #5c151b;
       transition: transform 0.3s ease;
     }
+    .floating-music-btn .pause-icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+      fill: #5c151b;
+      transition: transform 0.3s ease;
+    }
     .floating-music-btn.playing .music-note-icon {
+      display: block;
       animation: noteFloat 2.4s ease-in-out infinite alternate;
+    }
+    .floating-music-btn.playing .pause-icon {
+      display: none;
+    }
+    .floating-music-btn.paused .music-note-icon {
+      display: none;
+    }
+    .floating-music-btn.paused .pause-icon {
+      display: block;
     }
     @keyframes noteFloat {
       0% { transform: scale(1) rotate(0deg); }
       50% { transform: scale(1.12) rotate(8deg); }
       100% { transform: scale(1) rotate(-8deg); }
-    }
-    .floating-music-btn.paused {
-      opacity: 0.82;
-    }
-    .floating-music-btn.paused .music-note-icon {
-      animation: none;
     }
     @media (max-width: 600px) {
       .floating-music-btn {
@@ -344,6 +360,10 @@
       .floating-music-btn .music-note-icon {
         width: 20px;
         height: 20px;
+      }
+      .floating-music-btn .pause-icon {
+        width: 18px;
+        height: 18px;
       }
     }
   </style>
